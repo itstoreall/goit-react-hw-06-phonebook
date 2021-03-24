@@ -1,13 +1,13 @@
 import { createStore } from 'redux';
 
-// const initialState = {
-//   contacts: {
-//     items: [],
-//     filter: "",
-//   },
-// };
+const initialState = {
+  contacts: {
+    items: [],
+    filter: '',
+  },
+};
 
-const initialState = { counterValue: 0 };
+// const initialState = { counterValue: 0 };
 
 const reducer = (state = initialState, { type, payload }) => {
   console.log(state);

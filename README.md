@@ -2,11 +2,11 @@
 
 **Use**
 
-**_Redux_**
+- Redux
 
-**_React-Redux_**
+- React-Redux
 
-**_lib uuid_**
+- lib uuid
 
 ```
 npm i uuid
