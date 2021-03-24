@@ -1,16 +1,26 @@
-import { createStore } from "redux";
+import { createStore } from 'redux';
 
-const initialState = {
-  contacts: {
-    items: [],
-    filter: "",
-  },
-};
+// const initialState = {
+//   contacts: {
+//     items: [],
+//     filter: "",
+//   },
+// };
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "ADD_CONTACT":
-      return {};
+const initialState = { counterValue: 0 };
+
+const reducer = (state = initialState, { type, payload }) => {
+  console.log(state);
+  switch (type) {
+    case 'contact/add':
+      return { counterValue: state.counterValue + payload };
+
+    case 'contact/del':
+      return { counterValue: state.counterValue - payload };
+
+    case 'contact/filt':
+      return { counterValue: state.counterValue + payload };
+
     default:
       return state;
   }
