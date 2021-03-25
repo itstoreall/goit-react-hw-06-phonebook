@@ -6,6 +6,8 @@
 
 - React-Redux
 
+- redux-devtools-extension
+
 - lib uuid
 
 ```

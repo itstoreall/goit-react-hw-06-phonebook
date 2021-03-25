@@ -1,22 +1,36 @@
 // import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import * as actions from './redux/actions';
-// import Form from './components/PhonebookForm';
+import * as actions from './redux/contacts/contact-actions';
+// import dataBase from './components/dataBase/dataBase.json';
+import Form from './components/PhonebookForm';
 // import ContactList from './components/ContactList';
-// import Filter from './components/Filter';
+import Filter from './components/Filter';
 // import PropTypes from 'prop-types';
 
 import { wrapper, title, subtitle } from './App.module.scss';
 
-function App() {
+function App({
+  items,
+  filter,
+  handleSubmit,
+  handleDeleteContact,
+  handleInputFilter,
+}) {
+  // Фильтрация контактов
+  // const normalizedFilter = filter.toLowerCase();
+  // const filteredContacts = items.filter(item =>
+  //   item.name.toLowerCase().includes(normalizedFilter),
+  // );
+
   return (
     <div className={wrapper}>
       <h1 className={title}>Phonebook</h1>
-      {/* <Form onInputChange={handleInputFilter} onSubmit={handleSubmit} /> */}
+      <Form onInputChange={handleInputFilter} onSubmit={handleSubmit} />
       <h2 className={subtitle}>Contacts</h2>
-      {/* <Filter value={filter} onChange={handleInputFilter} /> */}
+      <Filter value={filter} onChange={handleInputFilter} />
       {/* <ContactList
-        contacts={filteredContacts}
+        // contacts={filteredContacts}
+        contacts={items}
         filter={filter}
         onInputChange={handleInputFilter}
         onDeleteContact={handleDeleteContact}
@@ -27,16 +41,17 @@ function App() {
 
 const mapStateToProps = state => {
   return {
-    items: state.contacts.items,
-    filter: state.contacts.filter,
+    items: [],
+    // filter: state.contacts.filter,
+    filter: '',
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleSubmit: () => dispatch(actions.addContact(1)),
-    handleDeleteContact: () => dispatch(actions.deleteContact(5)),
-    handleInputFilter: () => dispatch(actions.filterContacts(8)),
+    handleSubmit: newContact => dispatch(actions.addContact(newContact)),
+    handleDeleteContact: () => dispatch(actions.deleteContact()),
+    handleInputFilter: () => dispatch(actions.filterContacts()),
   };
 };
 

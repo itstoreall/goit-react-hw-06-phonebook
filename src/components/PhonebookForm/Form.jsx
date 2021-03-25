@@ -10,6 +10,7 @@ const Form = ({ onSubmit }) => {
   // Записывает значение инпута в стейт
   const handleInputForm = e => {
     const { name, value } = e.target;
+    console.log(e.target);
     name === 'name' ? setName(value) : setNumber(value);
   };
 
