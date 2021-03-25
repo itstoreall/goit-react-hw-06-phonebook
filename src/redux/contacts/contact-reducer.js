@@ -4,10 +4,10 @@ import { ADD, DELETE, FILTER } from './contact-types';
 const itemsReducer = (state = [], { type, payload }) => {
   switch (type) {
     case ADD:
-      return state;
+      return [...state, payload];
 
     case DELETE:
-      return state;
+      return state.filter(({ id }) => id !== payload);
 
     default:
       return state;

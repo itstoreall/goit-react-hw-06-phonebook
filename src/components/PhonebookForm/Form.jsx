@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+// import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import { form, label, input, button } from './Form.module.scss';
 
@@ -19,7 +19,7 @@ const Form = ({ onSubmit }) => {
     e.preventDefault();
 
     const newContact = {
-      id: uuidv4(),
+      // id: uuidv4(),
       name: name,
       number: number,
     };
