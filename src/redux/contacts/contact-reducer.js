@@ -1,9 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
-import dataBase from '../../components/dataBase/dataBase.json';
+import db from '../../components/dataBase/dataBase.json';
 import { combineReducers } from 'redux';
 import { ADD, DELETE, FILTER } from './contact-actions';
 
-const itemsReducer = createReducer(dataBase, {
+const itemsReducer = createReducer(db, {
   [ADD]: (state, { payload }) => [payload, ...state],
   [DELETE]: (state, { payload }) => state.filter(({ id }) => id !== payload),
 });

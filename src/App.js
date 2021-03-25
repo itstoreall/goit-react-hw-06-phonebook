@@ -1,11 +1,8 @@
 import { connect } from 'react-redux';
 import * as actions from './redux/contacts/contact-actions';
-// import dataBase from './components/dataBase/dataBase.json';
 import Form from './components/PhonebookForm';
 import ContactList from './components/ContactList';
 import Filter from './components/Filter';
-import PropTypes from 'prop-types';
-
 import { wrapper, title, subtitle } from './App.module.scss';
 
 function App({ handleSubmit, handleInputFilter }) {
@@ -20,20 +17,6 @@ function App({ handleSubmit, handleInputFilter }) {
   );
 }
 
-App.defaultProps = {
-  initialValue: [],
-};
-
-App.propTypes = {
-  initialValue: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    }),
-  ),
-};
-
 const mapStateToProps = state => {
   return state;
 };
@@ -41,8 +24,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     handleSubmit: newContact => dispatch(actions.ADD(newContact)),
-    handleDeleteContact: () => dispatch(actions.DELETE()),
-    handleInputFilter: () => dispatch(actions.FILTER()),
   };
 };
 

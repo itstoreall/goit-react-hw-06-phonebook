@@ -1,18 +1,42 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { getDefaultMiddleware, configureStore } from '@reduxjs/toolkit';
 import contactReducer from './contacts/contact-reducer';
+import storage from 'redux-persist/lib/storage';
+// import logger from 'redux-logger'; // Don't delete
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
 
-/* ------------------------ Logger for Redux
-import { getDefaultMiddleware } from '@reduxjs/toolkit';
-import logger from 'redux-logger';
-const middleware = [...getDefaultMiddleware(), logger];
----------------------------------------- */
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    },
+  }),
+  // logger, // Don't delete
+];
+
+const contactsPersistConfig = {
+  key: 'contacts',
+  storage,
+  blacklist: ['filter'],
+};
 
 const store = configureStore({
   reducer: {
-    contacts: contactReducer,
+    contacts: persistReducer(contactsPersistConfig, contactReducer),
   },
-  // middleware, // Logger for Redux
+  middleware,
+
   devTools: process.env.NODE_ENV === 'development',
 });
 
-export default store;
+const persistor = persistStore(store);
+
+export default { store, persistor }; // eslint-disable-line

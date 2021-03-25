@@ -1,5 +1,4 @@
 import { createAction } from '@reduxjs/toolkit';
-// import { ADD, DELETE, FILTER } from './contact-types';
 import { v4 as uuidv4 } from 'uuid';
 
 export const ADD = createAction('contact/add', newContact => ({
@@ -11,5 +10,3 @@ export const ADD = createAction('contact/add', newContact => ({
 }));
 export const DELETE = createAction('contact/delete');
 export const FILTER = createAction('contact/filter');
-
-// export default { addContact, deleteContact, filterContacts }; // eslint-disable-line
