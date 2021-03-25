@@ -4,7 +4,6 @@
   "private": true,
   "homepage": "https://itstoreall.github.io/goit-react-hw-06-phonebook",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.5.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.3",
@@ -16,7 +15,6 @@
     "react-redux": "^7.2.3",
     "react-scripts": "4.0.3",
     "redux": "^4.0.5",
-    "redux-logger": "^3.0.6",
     "uuid": "^8.3.2",
     "web-vitals": "^1.1.0"
   },

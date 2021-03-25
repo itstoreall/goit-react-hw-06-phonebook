@@ -1,30 +1,16 @@
+import { createReducer } from '@reduxjs/toolkit';
 import dataBase from '../../components/dataBase/dataBase.json';
 import { combineReducers } from 'redux';
-import { ADD, DELETE, FILTER } from './contact-types';
+import { ADD, DELETE, FILTER } from './contact-actions';
 
-// Логика обновления состояния
-const itemsReducer = (state = dataBase, { type, payload }) => {
-  switch (type) {
-    case ADD:
-      return [payload, ...state];
+const itemsReducer = createReducer(dataBase, {
+  [ADD]: (state, { payload }) => [payload, ...state],
+  [DELETE]: (state, { payload }) => state.filter(({ id }) => id !== payload),
+});
 
-    case DELETE:
-      return state.filter(({ id }) => id !== payload);
-
-    default:
-      return state;
-  }
-};
-
-const filterReducer = (state = '', { type, payload }) => {
-  switch (type) {
-    case FILTER:
-      return payload;
-
-    default:
-      return state;
-  }
-};
+const filterReducer = createReducer('', {
+  [FILTER]: (_, { payload }) => payload,
+});
 
 export default combineReducers({
   items: itemsReducer,

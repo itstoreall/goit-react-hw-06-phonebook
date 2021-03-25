@@ -40,9 +40,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    handleSubmit: newContact => dispatch(actions.ADD(newContact)),
-    handleDeleteContact: () => dispatch(actions.DELETE()),
-    handleInputFilter: () => dispatch(actions.FILTER()),
+    handleSubmit: newContact => dispatch(actions.addContact(newContact)),
+    handleDeleteContact: () => dispatch(actions.deleteContact()),
+    handleInputFilter: () => dispatch(actions.filterContacts()),
   };
 };
 

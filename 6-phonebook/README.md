@@ -8,10 +8,6 @@
 
 - redux-devtools-extension
 
-- Redux Toolkit
-
-- Logger for Redux
-
 - lib uuid
 
 ```
