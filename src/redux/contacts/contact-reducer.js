@@ -1,10 +1,12 @@
+import dataBase from '../../components/dataBase/dataBase.json';
 import { combineReducers } from 'redux';
 import { ADD, DELETE, FILTER } from './contact-types';
 
-const itemsReducer = (state = [], { type, payload }) => {
+// Логика обновления состояния
+const itemsReducer = (state = dataBase, { type, payload }) => {
   switch (type) {
     case ADD:
-      return [...state, payload];
+      return [payload, ...state];
 
     case DELETE:
       return state.filter(({ id }) => id !== payload);
@@ -17,7 +19,7 @@ const itemsReducer = (state = [], { type, payload }) => {
 const filterReducer = (state = '', { type, payload }) => {
   switch (type) {
     case FILTER:
-      return state;
+      return payload;
 
     default:
       return state;

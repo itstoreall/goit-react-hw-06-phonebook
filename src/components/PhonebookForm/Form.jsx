@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
 import { form, label, input, button } from './Form.module.scss';
 
@@ -10,7 +9,6 @@ const Form = ({ onSubmit }) => {
   // Записывает значение инпута в стейт
   const handleInputForm = e => {
     const { name, value } = e.target;
-    console.log(e.target);
     name === 'name' ? setName(value) : setNumber(value);
   };
 
@@ -18,13 +16,11 @@ const Form = ({ onSubmit }) => {
   const handleAddContact = e => {
     e.preventDefault();
 
-    const newContact = {
-      // id: uuidv4(),
+    onSubmit({
       name: name,
       number: number,
-    };
+    });
 
-    onSubmit(newContact);
     setName('');
     setNumber('');
   };
